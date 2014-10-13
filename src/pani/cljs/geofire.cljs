@@ -4,25 +4,30 @@
 (defn root
   "Create and return a Geofire root"
   [url]
-  (GeoFire. url))
+  (js/GeoFire. url))
 
-(defn set!
+(defn set-key
   "Set the location for the given key"
   [r k lat lng]
   (.set r key [lat lng]))
 
-(defn get
+(defn get-key
   "Get location associated with the given key, can accept a callback or returns a channel"
   ([r k]
    (let [c (chan)]
-     (get! r k #(put! c %))
+     (get r k #(put! c %))
      c))
   ([r k f]
    (-> (.get r)
        (.then f))))
 
+(defn remove-key
+  "Remove the key"
+    ([r k f e]
+   (-> (.remove r k)
+       (.then f e))))
 
-(def query
+(defn query
   "Setup a geofire query"
   ([r lat lng radius]
    (let [c (chan)]
