@@ -15,10 +15,10 @@
   "Get location associated with the given key, can accept a callback or returns a channel"
   ([r k]
    (let [c (chan)]
-     (get r k #(put! c %))
+     (.get r k #(put! c %))
      c))
   ([r k f]
-   (-> (.get r)
+   (-> (.get r k)
        (.then f))))
 
 (defn remove-key
