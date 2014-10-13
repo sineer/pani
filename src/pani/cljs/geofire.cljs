@@ -9,7 +9,7 @@
 (defn set-key
   "Set the location for the given key"
   [r k lat lng]
-  (.set r key [lat lng]))
+  (.set r key #js [lat lng]))
 
 (defn get-key
   "Get location associated with the given key, can accept a callback or returns a channel"
