@@ -19,7 +19,10 @@
      c))
   ([r k f]
    (-> (.get r k)
-       (.then f))))
+       (.then f)))
+  ([r k f e]
+   (-> (.get r k)
+       (.then f e))))
 
 (defn remove-key
   "Remove the key"

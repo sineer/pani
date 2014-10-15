@@ -71,6 +71,14 @@
   ([root korks val]
    (fb-call! #(.push %1 %2) root korks val)))
 
+(defn remove
+  "Remove the value at the given root"
+  ([root val]
+   (fb-call! #(.remove %1 %2) root val))
+
+  ([root korks val]
+   (fb-call! #(.remove %1 %2) root korks val)))
+
 (defn bind
   "Bind to a certain property under the given root"
   ([root type korks]
